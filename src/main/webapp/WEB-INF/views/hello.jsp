@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome Page</title>
 </head>
 <body>
-Welcome to Spring project
+<h1>Welcome to Spring project</h1>
 </body>
 </html>
