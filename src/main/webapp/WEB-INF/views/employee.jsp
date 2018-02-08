@@ -16,7 +16,7 @@
 		</h2>
 	</c:if>
 
-	<h1>Add a Employee</h1>
+	<h2>Add a Employee</h2>
 
 	<form:form action="/admin/employee/add" commandName="employee">
 		<table>
@@ -47,25 +47,24 @@
 			</tr>
 		</table>
 	</form:form>
-	<br /> Employee List
-	<br />
+	<br /> <h2>Employee List</h2>
 	<c:if test="${!empty list}">
-		<table border="2">
+		<table border=1 >
 			<tr>
-				<th>Employee ID</th>
-				<th>Name</th>
-				<th>Department</th>
-				<th>Edit</th>
-				<th>Delete</th>
+				<th width="100">Employee ID</th>
+				<th width="100">Name</th>
+				<th width="120">Department</th>
+				<th width="80">Edit</th>
+				<th width="80">Delete</th>
 			</tr>
 			<c:forEach items="${list}" var="employee">
 				<tr>
-					<td>${employee.id}</td>
+					<td align="center">${employee.id}</td>
 					<td>${employee.name}</td>
 					<td>${employee.department}</td>
-					<td><a
+					<td align="center"><a
 						href="<c:url value='/admin/employee/edit/${employee.id}' />">Edit</a></td>
-					<td><a
+					<td align="center"><a
 						href="<c:url value='/admin/employee/remove/${employee.id}' />">Delete</a></td>
 				</tr>
 			</c:forEach>
