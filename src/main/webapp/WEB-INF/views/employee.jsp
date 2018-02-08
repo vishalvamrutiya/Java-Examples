@@ -12,8 +12,22 @@
 
 
 <h1>Add a Employee</h1>
+
 <form:form action="/admin/employee/add" commandName="employee" > 	
 	<table>
+		<c:if test="${employee.id != 0}">
+	<tr>
+		<td>
+			<form:label path="id">
+				ID
+			</form:label>
+		</td>
+		<td>
+			<form:input path="id" readonly="true" size="8"  disabled="true" />
+			<form:hidden path="id" />
+		</td> 
+	</tr>
+	</c:if>
 		<tr>
 			<td><form:label path="name">Name:</form:label></td>
                         <td><form:input path="name" /></td>
@@ -24,22 +38,37 @@
 		</tr>		
 		<tr>
 			<td colspan="2" align="center">
-				<input type="submit" value="Add Employee" />	
+			<c:if test="${employee.id ==0 }">
+<input type="submit" value="Add Employee" />
+</c:if><c:if test="${employee.id !=0 }">
+<input type="submit" value="Edit Employee" />
+</c:if>
+					
 			</td>
 		</tr>
 	</table>
 </form:form>
 <br/>
 Employee List <br/>
-<table>
+<c:if test="${!empty list}">
+<table border="2">
 	<tr>
-		<th>ID</th>
+		<th>Employee ID</th>
 		<th>Name</th>
 		<th>Department</th>
-		<th></th>
-		<th></th>
+		<th>Edit</th>
+		<th>Delete</th>
 	</tr>
-	
+	<c:forEach items="${list}" var="employee">
+		<tr>
+			<td>${employee.id}</td>
+			<td>${employee.name}</td>
+			<td>${employee.department}</td>
+			<td><a href="<c:url value='/admin/employee/edit/${employee.id}' />" >Edit</a></td>
+			<td><a href="<c:url value='/admin/employee/remove/${employee.id}' />" >Delete</a></td>
+		</tr>
+	</c:forEach>
 </table>
+</c:if>
 </body>
 </html>

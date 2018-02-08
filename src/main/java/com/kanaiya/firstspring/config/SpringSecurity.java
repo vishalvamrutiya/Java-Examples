@@ -19,12 +19,10 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().
-		antMatchers("/admin**").access("hasRole('ROLE_ADMIN')").antMatchers("/dba**").access("hasRole('ROLE_USER')")
-		.and().formLogin().and().exceptionHandling().accessDeniedPage("/403")
+		http
+		.authorizeRequests().antMatchers("/admin**").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/dba**").access("hasRole('ROLE_USER')")
+		.and().formLogin().defaultSuccessUrl("/admin/list").and().exceptionHandling().accessDeniedPage("/403")
 		.and().csrf().disable();
 	}
-	
-	
-
 }
