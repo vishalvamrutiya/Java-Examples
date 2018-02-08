@@ -11,20 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 
-	@RequestMapping(value= {"/**","/welcome"},method=RequestMethod.GET)
+	@RequestMapping(value= {"/","/welcome"},method=RequestMethod.GET)
 	public String login() {
 		return "hello";
 	}
 	
 	
-	@RequestMapping(value = "/auth/login", method = RequestMethod.GET)
-	public String showLoginForm(HttpServletRequest request, Principal principal) {
-	    if(principal != null) {
-	        return "redirect:/";
-	    }
-
-	    return "login";
-	}
+	
 	@RequestMapping(value= {"/403"},method=RequestMethod.GET)
 	public String page403() {
 		return "403";

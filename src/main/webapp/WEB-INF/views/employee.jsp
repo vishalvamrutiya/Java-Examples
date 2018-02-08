@@ -9,7 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+		<h2>Welcome : ${pageContext.request.userPrincipal.name} | <a href="<c:url value="/logout" />" > Logout</a></h2>  
+	</c:if>
 
 <h1>Add a Employee</h1>
 
